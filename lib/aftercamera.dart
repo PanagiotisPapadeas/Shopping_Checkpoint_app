@@ -22,7 +22,7 @@ class _DetailScreenState extends State<DetailScreen> {
   Size? _imageSize;
   List<TextElement> _elements = [];
 
-  List<String>? _listEmailStrings;
+  List<String>? _listItemStrings;
 
   _DetailScreenState(this.slist);
 
@@ -46,8 +46,8 @@ class _DetailScreenState extends State<DetailScreen> {
     });
   }
 
-  // To detect the email addresses present in an image
-  void _recognizeEmails() async {
+  // To detect the items present in an image
+  void _recognizeItems() async {
     _getImageSize(File(_imagePath));
 
     // Creating an InputImage object using the image path
@@ -60,14 +60,14 @@ class _DetailScreenState extends State<DetailScreen> {
         r"^[a-zA-Z0-9]";
     RegExp regEx = RegExp(pattern);
 
-    List<String> emailStrings = [];
+    List<String> itemStrings = [];
 
     // Finding and storing the text String(s) and the TextElement(s)
     for (TextBlock block in text.textBlocks) {
       for (TextLine line in block.textLines) {
         print('text: ${line.lineText}');
         if (regEx.hasMatch(line.lineText)) {
-          emailStrings.add(line.lineText);
+          itemStrings.add(line.lineText);
           for (TextElement element in line.textElements) {
             _elements.add(element);
           }
@@ -76,9 +76,9 @@ class _DetailScreenState extends State<DetailScreen> {
     }
 
     setState(() {
-      _listEmailStrings = emailStrings;
-      for (var i = 0; i < _listEmailStrings!.length; i++) {
-        slist.items.add(Entry(title: _listEmailStrings![i]));
+      _listItemStrings = itemStrings;
+      for (var i = 0; i < _listItemStrings!.length; i++) {
+        slist.items.add(Entry(title: _listItemStrings![i]));
       }
     });
   }
@@ -88,7 +88,7 @@ class _DetailScreenState extends State<DetailScreen> {
     _imagePath = widget.imagePath;
     // Initializing the text detector
     _textDetector = GoogleMlKit.vision.textDetector();
-    _recognizeEmails();
+    _recognizeItems();
     super.initState();
   }
 
