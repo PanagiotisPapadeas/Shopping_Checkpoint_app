@@ -5,5 +5,5 @@ Extra feature AR camera that inserts automatically items in list through optical
 Fully compatible with most android devices.
 
 ### Tools used:
--Figma
--Flutter
+- Figma
+- Flutter
