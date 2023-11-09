@@ -4,7 +4,7 @@
    <uses-feature android:name="android.hardware.camera" />
    <uses-permission android:name="android.permission.CAMERA" />
    <application
-        android:label="shopping_checkpoint_app"
+        android:label="Shopping Checkpoint"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
