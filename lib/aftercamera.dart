@@ -9,10 +9,10 @@ class DetailScreen extends StatefulWidget {
   final SList slist;
   final String imagePath;
 
-  const DetailScreen({required this.imagePath, required this.slist});
+  const DetailScreen({Key? key, required this.imagePath, required this.slist}) : super(key: key);
 
   @override
-  _DetailScreenState createState() => _DetailScreenState(this.slist);
+  _DetailScreenState createState() => _DetailScreenState(slist);
 }
 
 class _DetailScreenState extends State<DetailScreen> {
@@ -20,7 +20,7 @@ class _DetailScreenState extends State<DetailScreen> {
   late final String _imagePath;
   late final TextDetector _textDetector;
   Size? _imageSize;
-  List<TextElement> _elements = [];
+  final List<TextElement> _elements = [];
 
   List<String>? _listItemStrings;
 
@@ -103,7 +103,7 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Image Details"),
+        title: const Text("Image Details"),
       ),
       body: _imageSize != null
           ? Stack(
@@ -135,8 +135,8 @@ class _DetailScreenState extends State<DetailScreen> {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 8.0),
                             child: Text(
                               "Identified items",
                               style: TextStyle(
@@ -145,16 +145,16 @@ class _DetailScreenState extends State<DetailScreen> {
                               ),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: 60,
                             child: SingleChildScrollView(
-                              child: _listEmailStrings != null
+                              child: _listItemStrings != null
                                   ? ListView.builder(
                                       shrinkWrap: true,
-                                      physics: BouncingScrollPhysics(),
-                                      itemCount: _listEmailStrings!.length,
+                                      physics: const BouncingScrollPhysics(),
+                                      itemCount: _listItemStrings!.length,
                                       itemBuilder: (context, index) =>
-                                          Text(_listEmailStrings![index]),
+                                          Text(_listItemStrings![index]),
                                     )
                                   : Container(),
                             ),
@@ -168,7 +168,7 @@ class _DetailScreenState extends State<DetailScreen> {
             )
           : Container(
               color: Colors.black,
-              child: Center(
+              child: const Center(
                 child: CircularProgressIndicator(),
               ),
             ),

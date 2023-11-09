@@ -4,7 +4,7 @@
    <uses-feature android:name="android.hardware.camera" />
    <uses-permission android:name="android.permission.CAMERA" />
    <application
-        android:label="shopping_checkpoint_app"
+        android:label="Shopping Checkpoint"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -28,6 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+       <receiver
+           android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+           android:exported="true" />
 
         <activity android:name="io.github.edufolly.fluttermobilevision.ocr.OcrCaptureActivity" />
         <!-- Don't delete the meta-data below.
