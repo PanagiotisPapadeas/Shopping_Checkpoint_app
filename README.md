@@ -1,6 +1,6 @@
 # Shopping Checkpoint
 
-A simple shopping list application written in Dart with the Flutter SDK. This app was created by [@PanagiotisPapadeas](https://github.com/PanagiotisPapadeas) and [@mvlassis](https://github.com/mvlassis) as part of the 2021-2022 course in Human-Computer Interaction from the National Technical University of Athens (NTUA). 
+A cross-platform shopping list application written in Dart with the Flutter SDK. This app was created by [@PanagiotisPapadeas](https://github.com/PanagiotisPapadeas) and [@mvlassis](https://github.com/mvlassis) as part of the 2021-2022 course in Human-Computer Interaction from the National Technical University of Athens (NTUA). 
 
 ## Features
 - Create shopping lists and populate them with items
