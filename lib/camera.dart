@@ -9,7 +9,7 @@ class CameraScreen extends StatefulWidget {
   const CameraScreen({Key? key, required this.slist}) : super(key: key);
 
   @override
-  _CameraScreenState createState() => _CameraScreenState(this.slist);
+  _CameraScreenState createState() => _CameraScreenState(slist);
 }
 
 class _CameraScreenState extends State<CameraScreen> {
@@ -82,7 +82,7 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ML camera'),
+        title: const Text('ML camera'),
       ),
       body: _controller.value.isInitialized
           ? Stack(
@@ -93,8 +93,8 @@ class _CameraScreenState extends State<CameraScreen> {
                   child: Container(
                     alignment: Alignment.bottomCenter,
                     child: ElevatedButton.icon(
-                      icon: Icon(Icons.camera),
-                      label: Text("Click"),
+                      icon: const Icon(Icons.camera),
+                      label: const Text("Click"),
                       onPressed: () async {
                         // If the returned path is not null navigate
                         // to the DetailScreen
@@ -121,7 +121,7 @@ class _CameraScreenState extends State<CameraScreen> {
             )
           : Container(
               color: Colors.black,
-              child: Center(
+              child: const Center(
                 child: CircularProgressIndicator(),
               ),
             ),

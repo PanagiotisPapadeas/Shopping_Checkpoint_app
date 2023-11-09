@@ -29,6 +29,10 @@
             </intent-filter>
         </activity>
 
+       <receiver
+           android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+           android:exported="true" />
+
         <activity android:name="io.github.edufolly.fluttermobilevision.ocr.OcrCaptureActivity" />
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->

@@ -8,7 +8,7 @@ Future<void> main() async {
  WidgetsFlutterBinding.ensureInitialized();
 
  cameras = await availableCameras();
- runApp(Shopping());
+ runApp(const Shopping());
 }
 
 class Shopping extends StatelessWidget {
@@ -31,7 +31,7 @@ class Shopping extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.indigo,
       ),
-      home: StartScreen(),
+      home: const StartScreen(),
     );
   }
 }
@@ -50,14 +50,12 @@ class _StartScreenState extends State<StartScreen> {
 
   void _addNewEntry() async {
     final SList _newEntry = await Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => AddList()));
+        .push(MaterialPageRoute(builder: (context) => const AddList()));
 
-    if (_newEntry != null) {
-      _lists.add(SList(title: _newEntry.title, items: <Entry>[]));
+    _lists.add(SList(title: _newEntry.title, items: <Entry>[]));
 
-      setState(() {});
+    setState(() {});
     }
-  }
 
   void _editList(int index) async {
     await Navigator.of(context)
@@ -100,7 +98,7 @@ class _StartScreenState extends State<StartScreen> {
             _deleteList(index);
           },
           trailing: IconButton(
-            icon: Icon(Icons.border_color),
+            icon: const Icon(Icons.border_color),
             onPressed: () {
               _editList(index);
               //Navigator.push(

@@ -12,7 +12,7 @@ class StScreen extends StatefulWidget {
   const StScreen({Key? key, required this.slist}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _StScreenState(this.slist);
+  State<StatefulWidget> createState() => _StScreenState(slist);
 }
 
 class _StScreenState extends State<StScreen> {
@@ -26,8 +26,8 @@ class _StScreenState extends State<StScreen> {
   void initState() {
     super.initState();
     var initializationSettingsAndroid =
-        new AndroidInitializationSettings('cart');
-    var initializationSettings = new InitializationSettings(
+        const AndroidInitializationSettings('cart');
+    var initializationSettings = InitializationSettings(
         android: initializationSettingsAndroid, iOS: null);
 
     flutterNotificationPlugin = FlutterLocalNotificationsPlugin();
@@ -53,13 +53,13 @@ class _StScreenState extends State<StScreen> {
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
-              title: Text("Hello Everyone"),
+              title: const Text("Hello Everyone"),
               content: Text("$payload"),
             ));
   }
 
   Future showNotitication() async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
       'Notification Channel ID',
       'Channel Name',
       'Description',
@@ -77,7 +77,7 @@ class _StScreenState extends State<StScreen> {
   }
 
   Future shoppingMode() async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
       'Notification Channel ID',
       'Channel Name',
       'Description',
@@ -110,7 +110,7 @@ class _StScreenState extends State<StScreen> {
         x, platformChannelSpecifics,
         payload: 'Default Sound');
 
-    var scheduledTime = DateTime.now().add(Duration(seconds: 10));
+    var scheduledTime = DateTime.now().add(const Duration(seconds: 10));
     flutterNotificationPlugin.schedule(
         1,
         'Reminder: Your shopping list',
@@ -157,13 +157,11 @@ class _StScreenState extends State<StScreen> {
 
   void _addNewE() async {
     final Entry _newEntry = await Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => AddLis()));
+        .push(MaterialPageRoute(builder: (context) => const AddLis()));
 
-    if (_newEntry != null) {
-      slist.items.add(Entry(title: _newEntry.title));
-      setState(() {});
+    slist.items.add(Entry(title: _newEntry.title));
+    setState(() {});
     }
-  }
 
   Widget _buildshopList() {
     return ListView.separated(
@@ -208,7 +206,7 @@ class _StScreenState extends State<StScreen> {
           tileColor: Colors.grey[300],
           title: Text(slist.items[index].title),
           trailing: IconButton(
-            icon: Icon(Icons.disabled_by_default),
+            icon: const Icon(Icons.disabled_by_default),
             onPressed: () {
               _deleteItem(index);
             },
@@ -297,7 +295,7 @@ class _StScreenState extends State<StScreen> {
                         .then((value) => setState(() => {}));
                   },
                   tooltip: 'Fill list with camera'),
-              Padding(padding: const EdgeInsets.all(30.0)),
+              const Padding(padding: EdgeInsets.all(30.0)),
               IconButton(
                   icon: const Icon(Icons.check_circle_rounded),
                   onPressed: () {
